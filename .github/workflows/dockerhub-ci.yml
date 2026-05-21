@@ -22,7 +22,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2. Login a Docker Hub
+      # 2. Verificar que el secret no esté vacío
+      - name: Verify Docker Hub username
+        run: |
+          if [ -z "${{ secrets.DOCKERHUB_USERNAME_GENESIS }}" ]; then
+            echo "ERROR: DOCKERHUB_USERNAME_GENESIS secret is empty or not set"
+            exit 1
+          else
+            echo "Username secret is set correctly"
+          fi
+
+      # 3. Login a Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -37,5 +47,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME_GENESIS }}/as241s5_aej_34-fe:latest
-            ${{ secrets.DOCKERHUB_USERNAME_GENESIS }}/as241s5_aej_34-fe:${{ github.sha }}
+            genesis2006/as241s5_aej_34-fe:latest
+            genesis2006/as241s5_aej_34-fe:${{ github.sha }}
