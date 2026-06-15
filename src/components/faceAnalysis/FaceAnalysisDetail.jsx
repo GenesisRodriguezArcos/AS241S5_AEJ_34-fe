@@ -101,10 +101,10 @@ export default function FaceAnalysisDetail({ record, onClose }) {
                 { label: 'Error Code', value: isOk ? '✓ OK' : `Error ${record.errorCode}`, icon: AlertCircle, color: isOk ? '#34d399' : '#f87171' },
                 { label: 'Rostros',    value: `${faces.length} detectado${faces.length !== 1 ? 's' : ''}`,    icon: User,        color: '#a78bfa' },
                 { label: 'Request ID', value: record.requestId ? record.requestId.slice(0,8) + '…' : '—',     icon: Hash,        color: '#f59e0b' },
-              ].map(({ label, value, icon: RowIcon, color }) => (
+              ].map(({ label, value, icon: ItemIcon, color }) => (
                 <div key={label} className="flex flex-col items-center gap-1.5 py-3 rounded-xl text-center"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                  <RowIcon size={15} style={{ color }} />
+                  <ItemIcon size={15} style={{ color }} />
                   <p className="text-white text-xs font-bold">{value}</p>
                   <p className="text-gray-600 text-xs">{label}</p>
                 </div>
