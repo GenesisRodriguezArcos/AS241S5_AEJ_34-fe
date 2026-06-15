@@ -1,17 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Modal from '../shared/Modal';
 
 export default function FaceDetectionForm({ record, onSave, onClose }) {
   const isEdit = !!record;
-  const [imageUrl,  setImageUrl]  = useState('');
-  const [imageName, setImageName] = useState('');
-
-  useEffect(() => {
-    if (record) {
-      setImageUrl(record.imageUrl   || '');
-      setImageName(record.imageName || '');
-    }
-  }, [record]);
+  const [imageUrl,  setImageUrl]  = useState(record?.imageUrl  || '');
+  const [imageName, setImageName] = useState(record?.imageName || '');
 
   const handleSubmit = (e) => {
     e.preventDefault();

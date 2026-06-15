@@ -44,7 +44,7 @@ export default function Sidebar() {
         <p className="text-gray-600 text-xs font-semibold uppercase tracking-widest px-3 mb-3">
           Navegación
         </p>
-        {links.map(({ to, label, Icon }) => (
+        {links.map(({ to, label, Icon: NavIcon }) => (
           <NavLink
             key={to}
             to={to}
@@ -58,7 +58,7 @@ export default function Sidebar() {
           >
             {({ isActive }) => (
               <>
-                <Icon size={17} className={isActive ? 'text-purple-400' : 'text-gray-600'} />
+                <NavIcon size={17} className={isActive ? 'text-purple-400' : 'text-gray-600'} />
                 {label}
               </>
             )}

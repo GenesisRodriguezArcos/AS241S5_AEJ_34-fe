@@ -10,7 +10,7 @@ const STAT_STYLES = [
   { from: '#ef4444', to: '#b91c1c', glow: 'rgba(239,68,68,0.4)'  },
 ];
 
-function StatCard({ icon: Icon, label, value, styleIdx }) {
+function StatCard({ icon: StatIcon, label, value, styleIdx }) {
   const s = STAT_STYLES[styleIdx];
   return (
     <div
@@ -23,7 +23,7 @@ function StatCard({ icon: Icon, label, value, styleIdx }) {
           boxShadow: `0 0 20px ${s.glow}, 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2)`,
         }}
       >
-        <Icon size={22} className="text-white" />
+        <StatIcon size={22} className="text-white" />
       </div>
       <div>
         <p className="text-gray-500 text-xs font-medium">{label}</p>
@@ -133,7 +133,7 @@ export default function DashboardPage() {
         {[
           { icon: ScanFace,     title: 'Últimas detecciones', color: '#3b82f6', data: detections.slice(0,5),  keyFn: r => r.imageName || r.imageUrl },
           { icon: BrainCircuit, title: 'Últimos análisis',    color: '#7c3aed', data: analyses.slice(0,5),    keyFn: r => r.requestId  || r.imageUrl },
-        ].map(({ icon: Icon, title, color, data, keyFn }) => (
+        ].map(({ icon: SectionIcon, title, color, data, keyFn }) => (
           <div
             key={title}
             className="rounded-2xl p-5"
@@ -144,7 +144,7 @@ export default function DashboardPage() {
             }}
           >
             <div className="flex items-center gap-2.5 mb-4">
-              <Icon size={17} style={{ color }} />
+              <SectionIcon size={17} style={{ color }} />
               <h3 className="text-white font-semibold text-sm">{title}</h3>
               <span
                 className="ml-auto text-xs px-2 py-0.5 rounded-full"

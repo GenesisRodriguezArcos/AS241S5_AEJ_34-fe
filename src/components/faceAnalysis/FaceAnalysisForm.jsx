@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Modal from '../shared/Modal';
 
 export default function FaceAnalysisForm({ record, onSave, onClose }) {
   const isEdit = !!record;
-  const [imageUrl, setImageUrl] = useState('');
-
-  useEffect(() => {
-    if (record) setImageUrl(record.imageUrl || '');
-  }, [record]);
+  const [imageUrl, setImageUrl] = useState(record?.imageUrl || '');
 
   const handleSubmit = (e) => {
     e.preventDefault();
