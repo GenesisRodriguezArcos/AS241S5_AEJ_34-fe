@@ -129,10 +129,10 @@ export default function FaceDetectionDetail({ record, onClose }) {
                 { label: 'Dimensiones', value: record.width ? `${record.width}×${record.height}` : '—', icon: Maximize2,   color: '#34d399' },
                 { label: 'Status API',  value: record.statusCode || '—',                                  icon: CheckCircle, color: '#60a5fa' },
                 { label: 'MD5',         value: record.md5 ? record.md5.slice(0,10) + '…' : '—',          icon: Hash,        color: '#f59e0b' },
-              ].map(({ label, value, icon: ItemIcon, color }) => (
+              ].map(({ label, value, icon, color }) => (
                 <div key={label} className="flex flex-col items-center gap-1.5 py-3 rounded-xl text-center"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                  <ItemIcon size={15} style={{ color }} />
+                  {icon({ size: 15, style: { color } })}
                   <p className="text-white text-xs font-bold">{value}</p>
                   <p className="text-gray-600 text-xs">{label}</p>
                 </div>
